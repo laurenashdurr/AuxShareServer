@@ -1,23 +1,19 @@
 module.exports = (sequelize, DataTypes) => {
 
-    const Mixes = sequelize.define("Mixes", {
+    const Profile = sequelize.define("Profile", {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        category: {
+        bio: {
             type: DataTypes.STRING,
             allowNull: true,
-        }, 
-        imageUrl: {
-            type: DataTypes.STRING, 
-            allowNull: true,
         },
-        description: {
-            type: DataTypes.STRING, 
+        avatarUrl: {
+            type: DataTypes.STRING,
             allowNull: true,
         }
 
     })
-    return Mixes
+    return Profile
 }
