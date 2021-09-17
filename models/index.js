@@ -14,12 +14,14 @@ const Profile = DefineProfile(sequelize, DataTypes)
 const Tracks = DefineTracks(sequelize, DataTypes)
 
 // associations
-Profile.hasOne(User, {
+User.hasOne(Profile, {
     onDelete: "CASCADE"
 });
-User.belongsTo(Profile);
+Profile.belongsTo(User);
 
-User.hasMany(Mixes);
+User.hasMany(Mixes, {
+    onDelete: "CASCADE"
+});
 Mixes.belongsTo(User);
 
 Mixes.hasMany(Tracks, {

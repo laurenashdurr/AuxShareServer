@@ -6,10 +6,13 @@ const port = 3000
 ;(async() => {
   app.use(express.json())
 
-  // app.use(require('./middleware/headers'))
+  app.use(require('./middleware/headers'))
 
   const auth = require('./controllers/Auth')
   app.use("/auth", auth)
+
+  const profile = require('./controllers/Profile')
+  app.use("/profile", profile)
 
   const mixes = require('./controllers/Mixes')
   app.use("/mixes", mixes)
