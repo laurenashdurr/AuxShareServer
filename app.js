@@ -17,6 +17,9 @@ const port = 3000
   const mixes = require('./controllers/Mixes')
   app.use("/mixes", mixes)
 
+  const tracks = require('./controllers/Tracks')
+  app.use("/tracks", tracks)
+
   app.listen(port, () => {
     console.log(`Aux Share app listening at http://localhost:${port}`)
   })
