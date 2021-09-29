@@ -20,7 +20,7 @@ router.post("/", validateJWT, async (req, res) => {
             })
             await u.addMixes(mix)
 
-            message = { message: "Mix Created!" }
+            message = { mix }
         }
         else {
             message = { message: "Can't make a mix, user does not exist", data: null }
