@@ -20,7 +20,7 @@ const port = 3000
   const tracks = require('./controllers/Tracks')
   app.use("/tracks", tracks)
 
-  app.listen(port, () => {
-    console.log(`Aux Share app listening at http://localhost:${port}`)
+  app.listen(process.env.PORT, () => {
+    console.log(`Aux Share server is listening on port ${process.env.PORT}`)
   })
 })()
