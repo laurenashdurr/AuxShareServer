@@ -13,6 +13,39 @@ router.post("/register", async (req, res) => {
         const user = await User.create({
             username,
             password: bcrypt.hashSync(password, 13),
+            role: 'basic'
+        })
+
+        let token = jwt.sign({ id: User.id }, process.env.JWT_SECRET, { expiresIn: '1d' })
+
+        res.status(201).json({
+            message: "User successfully registered",
+            user: user,
+            sessionToken: token
+        })
+
+    } catch (err) {
+        if (err instanceof UniqueConstraintError) {
+            res.status(400).json({
+                message: "Username already in use"
+            });
+        } else {
+            res.status(500).json({
+                message: "Failed to register user"
+            })
+        }
+    }
+
+})
+
+router.post("/admin/register", async (req, res) => {
+    let { username, password } = req.body.user;
+
+    try {
+        const user = await User.create({
+            username,
+            password: bcrypt.hashSync(password, 13),
+            role: 'admin'
         })
 
         let token = jwt.sign({ id: User.id }, process.env.JWT_SECRET, { expiresIn: '1d' })

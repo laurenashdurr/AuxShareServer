@@ -35,4 +35,15 @@ const validateJWT = async (req, res, next) => {
     }
 }
 
+// const authRole = async (role) => {
+//     return (req, res, next) => {
+//         if (req.user.role !== role) {
+//             res.status(401)
+//             return res.send("You do not have the sufficient permissions")
+//         }
+//         next()
+//     }
+// }
+
 module.exports = validateJWT;
+

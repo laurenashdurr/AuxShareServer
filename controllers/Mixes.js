@@ -107,6 +107,25 @@ router.delete("/delete/:mixId", validateJWT, async (req, res) => {
     }
 })
 
+// // delete my mix
+// router.delete("/admin/delete/:mixId", validateJWT, async (req, res) => {
+//     let mixId = req.params.mixId
+
+//     try {
+//         let query = {
+//             where: {
+            
+//                 id: mixId
+//             }
+//         };
+
+//         await Mixes.destroy(query);
+//         res.status(200).json({ message: "Mix has been removed" });
+//     } catch (err) {
+//         res.status(500).json({ error: err });
+//     }
+// })
+
 // get mixes by category
 router.get("/:category", validateJWT, async (req, res) => {
     let category = req.params.category
